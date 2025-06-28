@@ -1,0 +1,110 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+public class SniperTurret : MonoBehaviour {
+
+	public AudioClip hitAudio;
+	public Transform raycastPoint;
+	public Transform trailSpawn;
+	public GameObject bulletHole;
+	public GameObject trail;
+	public AudioClip shootAudio;
+	public float maxScatter;
+	public float coolDown;
+	public float damage;
+
+	public string special;
+	
+	GameObject target;
+	GameObject T;
+	bool canShoot;
+	bool shot;
+	float coolCount;
+
+	void Awake () {
+		canShoot = true;
+		shot = false;
+		coolCount = coolDown;
+	}
+
+	void FixedUpdate () {
+		LookForEnemy();
+
+		if (target != null){
+			Shot();
+			transform.LookAt(target.transform.position);
+		}
+	}
+
+	void LookForEnemy () {
+		if (target == null){
+			Destroy (T);
+
+			GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+			GameObject closest = null;
+			float distance = Mathf.Infinity;
+			if (enemies != null){
+				Vector3 position = transform.position;
+				foreach (GameObject enemy in enemies) {
+					Vector3 diff = enemy.transform.position - position;
+					float curDistance = diff.sqrMagnitude;
+					if (curDistance < distance) {
+						closest = enemy;
+						distance = curDistance;
+					}
+				}
+			}
+
+
+			target = closest;
+		}
+	}
+
+	void Shot () {
+		if (shot){ //can't shoot if just shot
+			shot = false;
+			canShoot = false;
+		}
+		if (!shot && T != null) //destroys trail when not shooting
+			Destroy(T);
+		
+		if (!canShoot) //timer for gun cooldown
+			coolCount -= Time.deltaTime;
+		if (coolCount <= 0){
+			canShoot = true;
+			coolCount = coolDown;
+		}
+
+		if (canShoot){
+			AudioSource.PlayClipAtPoint(shootAudio, transform.position, 0.5f);
+
+			Vector3 rayPoint = new Vector3(raycastPoint.position.x + Random.Range (-maxScatter, maxScatter), raycastPoint.position.y + Random.Range (-maxScatter, maxScatter), raycastPoint.position.z); //establishes random raypoint
+			
+			RaycastHit hit;
+			if (Physics.Raycast(rayPoint, raycastPoint.forward, out hit, Mathf.Infinity)){
+					
+				if (hit.transform.tag != "Invisable" && hit.transform.tag != "Path" && hit.transform.tag != "Finish" && hit.transform.tag != "Player"){ //if it dosen't hit a invisable object instantiate bullet hole
+					GameObject hole = (GameObject)Instantiate (bulletHole , hit.point + hit.normal * 0.01f, Quaternion.LookRotation(hit.normal));
+					hole.transform.parent = hit.transform;
+				}
+				
+				if (hit.transform.tag == "Enemy"){ //if hits enemy take from health
+					if (hit.transform.gameObject.GetComponent<enemyAI>() != null){
+						hit.transform.gameObject.GetComponent<enemyAI>().health -= damage;
+						AudioSource.PlayClipAtPoint(hitAudio, transform.position, 10);
+					}
+				}
+
+				T = (GameObject)Instantiate(trail, trailSpawn.position, trailSpawn.rotation); //instantiate trail
+				LineRenderer T_LR = T.GetComponent<LineRenderer>();
+				T_LR.SetPosition(0, rayPoint);
+				T_LR.SetPosition(1, hit.point);
+
+				Debug.DrawLine(rayPoint, hit.point);
+			}
+			shot = true;
+		}
+	}	
+}

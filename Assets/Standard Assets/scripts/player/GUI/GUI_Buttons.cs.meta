@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: a95a0b93d3021704aaa690171949db6d
+timeCreated: 1464977002
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - s: {fileID: 154984, guid: ba41bc3917629114db52138bad063c84, type: 2}
+  - center: {instanceID: 0}
+  - Bskin: {instanceID: 0}
+  - Uskin: {instanceID: 0}
+  - Xskin: {instanceID: 0}
+  - Oskin: {instanceID: 0}
+  - Pskin: {instanceID: 0}
+  - FFskin: {instanceID: 0}
+  - buildScreen: {instanceID: 0}
+  - pauseScreen: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
