@@ -30,6 +30,17 @@ This Unity 2020.3 LTS project was developed between **May 2015 and August 2016**
 3. Load the `mainMenu` scene located in `Assets/Scenes`.
 4. Press `Play` to run the game in the editor or build for Android using `File -> Build Settings`.
 
+## Towers Implemented
+
+- **Turret**: A basic machine gun turret with a high fire rate and moderate damage.
+- **Cannon Turret**: Fires at a lower rate but deals higher damage per shot.
+- **Sniper Turret**: Features infinite range, very high damage, but a very low fire rate.
+- **Flamethrower**: Applies continuous damage with a flame effect.
+- **Grenade Launcher**: Launches grenades at the nearest enemy, dealing high area-of-effect (AoE) damage.
+- **Air Command**: Calls in missile strikes at regular intervals, delivering very high AoE damage.
+- **Rocket Launcher**: Fires a volley of four rockets at enemies, offering high range and explosive impact.
+- **Sentry**: Combines the attributes of a simple turret and a cannon turret, providing high damage, a high fire rate, and medium range.
+
 ## Controls
 
 - `WASD` - Move
