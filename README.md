@@ -1,22 +1,12 @@
 # Red Attackers
 
-Single-player 3D tower defense game where the player defends against waves of red cubes using a variety of placeable defenses. The game features a first-person character controller, enemy waypoint system, wave spawning with progressive difficulty, and 8 unique tower types.
-
-## Table of Contents
-
-- [Overview](#overview)
-- [Features](#features)
-- [Installation](#installation)
-- [Controls](#controls)
-- [Project Structure](#project-structure)
-- [Demo Video](#demo-video)
-- [License](#license)
-
----
+![hero](https://github.com/user-attachments/assets/522a5feb-c814-4db0-b4ff-66cf985aa474)
 
 ## Overview
 
-**Red Attackers** is a **Unity 2020.3 LTS** project developed between **May 2015 - August 2016** as a learning exercise in game development and 3D asset pipelines. The game blends FPS and tower defense mechanics with the intention of targeting mobile platforms. This was one of my earliest game development projects, built while I was learning Unity and C# from the ages of 11-12.
+Red Attackers is a single-player 3D tower defense game where players defend against waves of red cubes using a variety of placeable defenses. The game combines FPS mechanics with classic tower defense gameplay, featuring a first-person character controller, enemy waypoint system, progressive wave spawning, and 8 unique tower types.
+
+This Unity 2020.3 LTS project was developed between **May 2015 and August 2016** as a learning exercise in game development and 3D asset creation. This was one of my earliest game development projects, built while I was learning Unity and C# from the ages of 11-12.
 
 ## Features
 
@@ -62,12 +52,3 @@ The project is organized as follows:
   - **Standard Assets/**: Unity's standard assets used in the project.
 - **Packages/**: Manages Unity packages used in the project. This folder is automatically handled by Unity.
 - **ProjectSettings/**: Includes settings for the Unity project, such as input configurations, tags, and layers.
-
----
-
-**Built with:**
-- **C#**, **Unity 2020.3 LTS**, **Blender**, **Photoshop**
-
----
-
-**Enjoy defending against waves of red attackers!**
